@@ -8,7 +8,12 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1115814677653739"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Local build; CDN fallback if styles.css hasn't been generated yet -->
+    <link
+      rel="stylesheet"
+      href="styles.css"
+      onerror="var s=document.createElement('script');s.src='https://cdn.tailwindcss.com';document.head.appendChild(s)"
+    />
   </head>
 
   <body class="bg-gray-100">
@@ -20,15 +25,16 @@
       <p class="text-gray-600 mb-6">
         Resize your images instantly — no quality loss, no signup.
       </p>
-      <a href="#tool" class="bg-blue-500 text-white px-6 py-3 rounded-lg">
+      <a
+        href="#tool"
+        class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition"
+      >
         Start Resizing
       </a>
     </section>
 
     <div class="text-center my-6">
       <p class="text-xs text-gray-400">Advertisement</p>
-
-      <!-- AdSense code here -->
       <ins
         class="adsbygoogle"
         style="display: block"
@@ -36,7 +42,6 @@
         data-ad-slot="1234567890"
         data-ad-format="auto"
       ></ins>
-
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
@@ -50,61 +55,61 @@
         <!-- Drag & Drop -->
         <div
           id="dropZone"
-          class="border-2 border-dashed border-gray-300 p-6 rounded-lg mb-4 cursor-pointer"
+          class="border-2 border-dashed border-gray-300 p-6 rounded-lg mb-4 cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition"
         >
           <p class="text-gray-500">Drag & drop an image or click</p>
           <input type="file" id="upload" class="hidden" />
         </div>
 
-        <img
-          id="imagePreview"
-          class="hidden mb-4 rounded-lg max-h-40 mx-auto"
-        />
+        <img id="imagePreview" class="hidden mb-4 rounded-lg max-h-40 mx-auto" />
 
         <!-- Presets -->
-        <div class="grid grid-cols-2 gap-3 mb-4">
+        <div class="grid grid-cols-2 gap-3 mb-6">
           <button
-            class="preset-btn bg-pink-100 p-3 rounded-lg transition transform hover:scale-105"
+            class="preset-btn bg-pink-100 p-3 rounded-lg transition text-sm font-medium"
             data-size="1080x1080"
           >
             📸 Instagram Post
-            <div class="text-xs text-gray-500">1:1 square</div>
+            <div class="text-xs opacity-60 mt-1">1:1 square</div>
           </button>
 
           <button
-            class="preset-btn bg-gradient-to-r from-purple-100 to-blue-100 p-3 rounded-lg transition transform hover:scale-105"
+            class="preset-btn bg-gradient-to-r from-purple-100 to-blue-100 p-3 rounded-lg transition text-sm font-medium"
             data-size="1080x1920"
           >
             🎥 Reels / TikTok
-            <div class="text-xs text-gray-500">9:16 vertical</div>
+            <div class="text-xs opacity-60 mt-1">9:16 vertical</div>
           </button>
 
           <button
-            class="preset-btn bg-orange-100 p-3 rounded-lg transition transform hover:scale-105"
+            class="preset-btn bg-orange-100 p-3 rounded-lg transition text-sm font-medium"
             data-size="1080x1920"
           >
             📱 Instagram Story
-            <div class="text-xs text-gray-500">Full screen</div>
+            <div class="text-xs opacity-60 mt-1">Full screen</div>
           </button>
 
           <button
-            class="preset-btn bg-red-100 p-3 rounded-lg transition transform hover:scale-105"
+            class="preset-btn bg-red-100 p-3 rounded-lg transition text-sm font-medium"
             data-size="1280x720"
           >
             ▶️ YouTube Thumbnail
-            <div class="text-xs text-gray-500">16:9 landscape</div>
+            <div class="text-xs opacity-60 mt-1">16:9 landscape</div>
           </button>
         </div>
 
-        <!-- Export -->
-        <div class="mb-4 text-left">
-          <label class="block mb-1 font-semibold">Format</label>
-          <select id="exportFormat" class="w-full p-2 border rounded mb-3">
+        <!-- Export Options -->
+        <div class="pt-5 mt-2 border-t border-gray-100 mb-5 text-left">
+          <label class="block mb-1 font-semibold text-sm text-gray-700">Format</label>
+          <select
+            id="exportFormat"
+            class="w-full p-2 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          >
             <option value="image/png">PNG</option>
             <option value="image/jpeg">JPG</option>
           </select>
 
-          <label class="block mb-1 font-semibold">Quality</label>
+          <label class="block mb-1 font-semibold text-sm text-gray-700">Quality</label>
           <input
             id="quality"
             type="range"
@@ -112,43 +117,43 @@
             max="1"
             step="0.1"
             value="0.9"
-            class="w-full"
+            class="w-full accent-blue-500"
           />
         </div>
 
+        <!-- Resize Button -->
         <button
           onclick="resizeImage()"
-          class="bg-blue-500 text-white px-4 py-2 rounded w-full"
+          class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-semibold px-4 py-3 rounded-xl w-full transition shadow-sm"
         >
           Resize Image
         </button>
 
-        <canvas id="preview" class="mt-4 border rounded"></canvas>
+        <!-- Canvas Preview -->
+        <canvas id="preview" class="hidden mt-5 border rounded-lg max-w-full"></canvas>
 
-        <a href="background-remover.html" class="text-blue-500 block mt-4">
-          🪄 Try Background Remover →
-        </a>
-
-        <a
-          href="https://quickpdftool.onrender.com"
-          target="_blank"
-          class="text-blue-500 block mt-4"
-        >
-          🪄 Try PDF Tools →
-        </a>
-
+        <!-- Download Button -->
         <a
           id="download"
-          class="mt-4 text-blue-600 hidden"
+          class="hidden mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-xl w-full text-center transition shadow-sm"
           download="resized.png"
         >
-          Download Image
+          ⬇ Download Image
         </a>
+
+        <!-- Tool Links -->
+        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-center gap-5 text-sm">
+          <a href="background-remover.html" class="text-blue-500 hover:underline">
+            🪄 Background Remover
+          </a>
+          <a href="https://quickpdftool.onrender.com" target="_blank" class="text-blue-500 hover:underline">
+            🪄 PDF Tools
+          </a>
+        </div>
       </div>
     </section>
 
-    
-      <!-- AdSense code here -->
+    <div class="text-center my-6">
       <ins
         class="adsbygoogle"
         style="display: block"
@@ -156,7 +161,6 @@
         data-ad-slot="1234567890"
         data-ad-format="auto"
       ></ins>
-
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
@@ -165,7 +169,6 @@
     <!-- FEATURES -->
     <section class="py-16 text-center">
       <h2 class="text-2xl font-bold mb-8">Why Use Our Tool?</h2>
-
       <div class="grid md:grid-cols-3 gap-6 px-6">
         <div class="bg-white p-6 rounded shadow">⚡ Fast & Free</div>
         <div class="bg-white p-6 rounded shadow">📱 Social Media Ready</div>
@@ -173,45 +176,35 @@
       </div>
     </section>
 
-    <!-- ✅ ALL JS HERE (important) -->
     <script>
-      // =========================
-      // Step 4.2 + 4.4 (PRESETS)
-      // =========================
+      // PRESETS — use inline styles for active state so Tailwind purge doesn't remove them
       let selectedFormat = "1080x1080";
-
       const buttons = document.querySelectorAll(".preset-btn");
+
+      function setActive(btn) {
+        buttons.forEach((b) => {
+          b.style.backgroundColor = "";
+          b.style.color = "";
+          b.style.boxShadow = "";
+          b.style.transform = "";
+        });
+        btn.style.backgroundColor = "#3b82f6";
+        btn.style.color = "#ffffff";
+        btn.style.boxShadow = "0 0 0 3px #1d4ed8";
+        btn.style.transform = "scale(1.03)";
+      }
 
       buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
-          // remove active state
-          buttons.forEach((b) => {
-            b.classList.remove(
-              "ring-2",
-              "ring-blue-500",
-              "scale-105",
-              "bg-blue-50",
-            );
-          });
-
-          // add active state
-          btn.classList.add(
-            "ring-2",
-            "ring-blue-500",
-            "scale-105",
-            "bg-blue-50",
-          );
-
+          setActive(btn);
           selectedFormat = btn.dataset.size;
         });
       });
 
-      // default selected
-      buttons[0].classList.add("ring-2", "ring-blue-500", "bg-blue-50");
+      // default: first button selected
+      setActive(buttons[0]);
 
-      // =========================
-      // Drag & Drop (Step 3)
-      // =========================
+      // DRAG & DROP
       const dropZone = document.getElementById("dropZone");
       const fileInput = document.getElementById("upload");
       const previewImg = document.getElementById("imagePreview");
@@ -222,71 +215,50 @@
         e.preventDefault();
         dropZone.classList.add("border-blue-500");
       });
-
       dropZone.addEventListener("dragleave", () => {
         dropZone.classList.remove("border-blue-500");
       });
-
       dropZone.addEventListener("drop", (e) => {
         e.preventDefault();
         dropZone.classList.remove("border-blue-500");
-
         const file = e.dataTransfer.files[0];
         fileInput.files = e.dataTransfer.files;
-
         showPreview(file);
       });
-
-      fileInput.addEventListener("change", () => {
-        const file = fileInput.files[0];
-        showPreview(file);
-      });
+      fileInput.addEventListener("change", () => showPreview(fileInput.files[0]));
 
       function showPreview(file) {
         const reader = new FileReader();
-
-        reader.onload = function (e) {
+        reader.onload = (e) => {
           previewImg.src = e.target.result;
           previewImg.classList.remove("hidden");
         };
-
         reader.readAsDataURL(file);
       }
 
-      // =========================
-      // Resize Function
-      // =========================
+      // RESIZE
       function resizeImage() {
         const file = fileInput.files[0];
-        const selectedSize = selectedFormat;
+        if (!file) { alert("Please upload an image"); return; }
 
-        const [width, height] = selectedSize.split("x").map(Number);
-
-        if (!file) {
-          alert("Please upload an image");
-          return;
-        }
-
+        const [width, height] = selectedFormat.split("x").map(Number);
         const img = new Image();
         const reader = new FileReader();
 
-        reader.onload = function (e) {
-          img.src = e.target.result;
-        };
+        reader.onload = (e) => { img.src = e.target.result; };
 
         img.onload = function () {
           const canvas = document.getElementById("preview");
           canvas.width = width;
           canvas.height = height;
+          canvas.classList.remove("hidden");
 
           const ctx = canvas.getContext("2d");
-
           ctx.fillStyle = "#ffffff";
           ctx.fillRect(0, 0, width, height);
 
           const imgRatio = img.width / img.height;
           const canvasRatio = width / height;
-
           let drawWidth, drawHeight, offsetX, offsetY;
 
           if (imgRatio > canvasRatio) {
@@ -304,13 +276,9 @@
           ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
 
           const link = document.getElementById("download");
-          const formatSelect = document.getElementById("exportFormat");
-          const qualityInput = document.getElementById("quality");
+          const format = document.getElementById("exportFormat").value;
+          const quality = parseFloat(document.getElementById("quality").value);
 
-          const format = formatSelect.value;
-          const quality = parseFloat(qualityInput.value);
-
-          // Generate image
           if (format === "image/jpeg") {
             link.download = "resized.jpg";
             link.href = canvas.toDataURL(format, quality);
@@ -325,16 +293,12 @@
         reader.readAsDataURL(file);
       }
 
+      // QUALITY SLIDER visibility
       const exportFormat = document.getElementById("exportFormat");
       const qualitySlider = document.getElementById("quality");
       qualitySlider.style.display = "none";
-
       exportFormat.addEventListener("change", () => {
-        if (exportFormat.value === "image/png") {
-          qualitySlider.style.display = "none";
-        } else {
-          qualitySlider.style.display = "block";
-        }
+        qualitySlider.style.display = exportFormat.value === "image/png" ? "none" : "block";
       });
     </script>
   </body>
