@@ -109,16 +109,18 @@
             <option value="image/jpeg">JPG</option>
           </select>
 
-          <label class="block mb-1 font-semibold text-sm text-gray-700">Quality</label>
-          <input
-            id="quality"
-            type="range"
-            min="0.5"
-            max="1"
-            step="0.1"
-            value="0.9"
-            class="w-full accent-blue-500"
-          />
+          <div id="qualityGroup">
+            <label class="block mb-1 font-semibold text-sm text-gray-700">Quality</label>
+            <input
+              id="quality"
+              type="range"
+              min="0.5"
+              max="1"
+              step="0.1"
+              value="0.9"
+              class="w-full accent-blue-500"
+            />
+          </div>
         </div>
 
         <!-- Resize Button -->
@@ -295,10 +297,10 @@
 
       // QUALITY SLIDER visibility
       const exportFormat = document.getElementById("exportFormat");
-      const qualitySlider = document.getElementById("quality");
-      qualitySlider.style.display = "none";
+      const qualityGroup = document.getElementById("qualityGroup");
+      qualityGroup.style.display = "none";
       exportFormat.addEventListener("change", () => {
-        qualitySlider.style.display = exportFormat.value === "image/png" ? "none" : "block";
+        qualityGroup.style.display = exportFormat.value === "image/jpeg" ? "block" : "none";
       });
     </script>
   </body>
