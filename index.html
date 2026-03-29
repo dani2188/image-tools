@@ -8,7 +8,7 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1115814677653739"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body class="bg-gray-100">
@@ -44,7 +44,7 @@
 
     <!-- TOOL SECTION -->
     <section id="tool" class="flex justify-center py-16">
-      <div class="bg-white p-6 rounded-2xl shadow-lg w-96 text-center">
+      <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-sm mx-4 text-center">
         <h2 class="text-xl font-bold mb-4">📸 Image Resizer</h2>
 
         <!-- Drag & Drop -->
@@ -139,7 +139,7 @@
 
         <a
           id="download"
-          class="block mt-4 text-blue-600 hidden"
+          class="mt-4 text-blue-600 hidden"
           download="resized.png"
         >
           Download Image
@@ -319,6 +319,7 @@
             link.href = canvas.toDataURL(format);
           }
           link.classList.remove("hidden");
+          link.classList.add("block");
         };
 
         reader.readAsDataURL(file);
