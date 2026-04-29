@@ -2,189 +2,340 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Image Resizer Tool</title>
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1115814677653739"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Local build; CDN fallback if styles.css hasn't been generated yet -->
-    <link
-      rel="stylesheet"
-      href="styles.css"
-      onerror="var s=document.createElement('script');s.src='https://cdn.tailwindcss.com';document.head.appendChild(s)"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free online image resizer for Instagram, TikTok, YouTube, and more. Resize images instantly in your browser — no upload, no signup, no quality loss." />
+    <meta property="og:title" content="Free Image Resizer — QuickImageTools" />
+    <meta property="og:description" content="Resize images for any social media platform in seconds. Works entirely in your browser. No signup required." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://quickimagetools.onrender.com/" />
+    <link rel="canonical" href="https://quickimagetools.onrender.com/" />
+    <title>Free Image Resizer for Instagram, TikTok & YouTube — QuickImageTools</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1115814677653739" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" onerror="var s=document.createElement('script');s.src='https://cdn.tailwindcss.com';document.head.appendChild(s)" />
   </head>
 
-  <body class="bg-gray-100">
+  <body class="bg-gray-50 text-gray-800">
+
+    <!-- NAV -->
+    <nav class="bg-white shadow-sm sticky top-0 z-10">
+      <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="/" class="font-bold text-blue-600 text-lg">QuickImageTools</a>
+        <div class="flex gap-4 text-sm font-medium text-gray-600">
+          <a href="/" class="text-blue-600">Image Resizer</a>
+          <a href="/background-remover.html" class="hover:text-blue-500 transition">BG Remover</a>
+          <a href="/blog/" class="hover:text-blue-500 transition">Blog</a>
+          <a href="/about.html" class="hover:text-blue-500 transition">About</a>
+        </div>
+      </div>
+    </nav>
+
     <!-- HERO -->
-    <section class="text-center py-16 bg-white shadow">
-      <h1 class="text-3xl font-bold mb-4">
-        Free Image Resizer for Instagram, TikTok & YouTube
-      </h1>
-      <p class="text-gray-600 mb-6">
-        Resize your images instantly — no quality loss, no signup.
-      </p>
-      <a
-        href="#tool"
-        class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition"
-      >
-        Start Resizing
-      </a>
+    <section class="text-center py-14 bg-white shadow-sm">
+      <h1 class="text-3xl font-bold mb-3">Free Image Resizer for Social Media</h1>
+      <p class="text-gray-600 mb-2 max-w-xl mx-auto">Resize images for Instagram, TikTok, YouTube, and more — instantly in your browser. No signup. No upload to any server. 100% private.</p>
+      <p class="text-sm text-gray-400 mb-6">Supports PNG and JPG · Works on any device</p>
+      <a href="#tool" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition font-semibold">Start Resizing Free</a>
     </section>
 
+    <!-- AD -->
     <div class="text-center my-6">
-      <p class="text-xs text-gray-400">Advertisement</p>
-      <ins
-        class="adsbygoogle"
-        style="display: block"
-        data-ad-client="ca-pub-1115814677653739"
-        data-ad-slot="1234567890"
-        data-ad-format="auto"
-      ></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      <p class="text-xs text-gray-400 mb-1">Advertisement</p>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1115814677653739" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <!-- TOOL SECTION -->
-    <section id="tool" class="flex justify-center py-16">
+    <section id="tool" class="flex justify-center py-12">
       <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-sm mx-4 text-center">
-        <h2 class="text-xl font-bold mb-4">📸 Image Resizer</h2>
+        <h2 class="text-xl font-bold mb-4">Resize Your Image</h2>
 
-        <!-- Drag & Drop -->
-        <div
-          id="dropZone"
-          class="border-2 border-dashed border-gray-300 p-6 rounded-lg mb-4 cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition"
-        >
-          <p class="text-gray-500">Drag & drop an image or click</p>
-          <input type="file" id="upload" class="hidden" />
+        <div id="dropZone" class="border-2 border-dashed border-gray-300 p-6 rounded-lg mb-4 cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition">
+          <p class="text-gray-500">Drag &amp; drop an image here, or click to upload</p>
+          <input type="file" id="upload" class="hidden" accept="image/*" />
         </div>
 
-        <img id="imagePreview" class="hidden mb-4 rounded-lg max-h-40 mx-auto" />
+        <img id="imagePreview" class="hidden mb-4 rounded-lg max-h-40 mx-auto" alt="Preview of your uploaded image" />
 
-        <!-- Presets -->
+        <p class="text-xs text-gray-500 mb-3 text-left font-semibold uppercase tracking-wide">Choose a preset</p>
         <div class="grid grid-cols-2 gap-3 mb-6">
-          <button
-            class="preset-btn bg-pink-100 p-3 rounded-lg transition text-sm font-medium"
-            data-size="1080x1080"
-          >
-            📸 Instagram Post
-            <div class="text-xs opacity-60 mt-1">1:1 square</div>
+          <button class="preset-btn bg-pink-100 p-3 rounded-lg transition text-sm font-medium" data-size="1080x1080">
+            Instagram Post
+            <div class="text-xs opacity-60 mt-1">1080 × 1080 · 1:1</div>
           </button>
-
-          <button
-            class="preset-btn bg-gradient-to-r from-purple-100 to-blue-100 p-3 rounded-lg transition text-sm font-medium"
-            data-size="1080x1920"
-          >
-            🎥 Reels / TikTok
-            <div class="text-xs opacity-60 mt-1">9:16 vertical</div>
+          <button class="preset-btn bg-gradient-to-r from-purple-100 to-blue-100 p-3 rounded-lg transition text-sm font-medium" data-size="1080x1920">
+            Reels / TikTok
+            <div class="text-xs opacity-60 mt-1">1080 × 1920 · 9:16</div>
           </button>
-
-          <button
-            class="preset-btn bg-orange-100 p-3 rounded-lg transition text-sm font-medium"
-            data-size="1080x1920"
-          >
-            📱 Instagram Story
-            <div class="text-xs opacity-60 mt-1">Full screen</div>
+          <button class="preset-btn bg-orange-100 p-3 rounded-lg transition text-sm font-medium" data-size="1080x1920">
+            Instagram Story
+            <div class="text-xs opacity-60 mt-1">1080 × 1920 · Full screen</div>
           </button>
-
-          <button
-            class="preset-btn bg-red-100 p-3 rounded-lg transition text-sm font-medium"
-            data-size="1280x720"
-          >
-            ▶️ YouTube Thumbnail
-            <div class="text-xs opacity-60 mt-1">16:9 landscape</div>
+          <button class="preset-btn bg-red-100 p-3 rounded-lg transition text-sm font-medium" data-size="1280x720">
+            YouTube Thumbnail
+            <div class="text-xs opacity-60 mt-1">1280 × 720 · 16:9</div>
           </button>
         </div>
 
-        <!-- Export Options -->
         <div class="pt-5 mt-2 border-t border-gray-100 mb-5 text-left">
-          <label class="block mb-1 font-semibold text-sm text-gray-700">Format</label>
-          <select
-            id="exportFormat"
-            class="w-full p-2 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          >
-            <option value="image/png">PNG</option>
-            <option value="image/jpeg">JPG</option>
+          <label class="block mb-1 font-semibold text-sm text-gray-700">Output Format</label>
+          <select id="exportFormat" class="w-full p-2 border border-gray-200 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-300">
+            <option value="image/png">PNG (lossless, best for logos)</option>
+            <option value="image/jpeg">JPG (smaller file, best for photos)</option>
           </select>
 
-          <div id="qualityGroup">
-            <label class="block mb-1 font-semibold text-sm text-gray-700">Quality</label>
-            <input
-              id="quality"
-              type="range"
-              min="0.5"
-              max="1"
-              step="0.1"
-              value="0.9"
-              class="w-full accent-blue-500"
-            />
+          <div id="qualityGroup" style="display:none">
+            <label class="block mb-1 font-semibold text-sm text-gray-700">JPG Quality: <span id="qualityVal">90%</span></label>
+            <input id="quality" type="range" min="0.5" max="1" step="0.05" value="0.9" class="w-full accent-blue-500" />
           </div>
         </div>
 
-        <!-- Resize Button -->
-        <button
-          onclick="resizeImage()"
-          class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-semibold px-4 py-3 rounded-xl w-full transition shadow-sm"
-        >
+        <button onclick="resizeImage()" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-semibold px-4 py-3 rounded-xl w-full transition shadow-sm">
           Resize Image
         </button>
 
-        <!-- Canvas Preview -->
         <canvas id="preview" class="hidden mt-5 border rounded-lg max-w-full"></canvas>
 
-        <!-- Download Button -->
-        <a
-          id="download"
-          class="hidden mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-xl w-full text-center transition shadow-sm"
-          download="resized.png"
-        >
-          ⬇ Download Image
+        <a id="download" class="hidden mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-xl w-full text-center transition shadow-sm" download="resized.png">
+          Download Resized Image
         </a>
 
-        <!-- Tool Links -->
         <div class="mt-6 pt-4 border-t border-gray-100 flex justify-center gap-5 text-sm">
-          <a href="background-remover.html" class="text-blue-500 hover:underline">
-            🪄 Background Remover
-          </a>
-          <a href="https://quickpdftool.onrender.com" target="_blank" class="text-blue-500 hover:underline">
-            🪄 PDF Tools
-          </a>
+          <a href="/background-remover.html" class="text-blue-500 hover:underline">Background Remover</a>
+          <a href="https://quickpdftool.onrender.com" target="_blank" rel="noopener" class="text-blue-500 hover:underline">PDF Tools</a>
         </div>
       </div>
     </section>
 
+    <!-- AD -->
     <div class="text-center my-6">
-      <ins
-        class="adsbygoogle"
-        style="display: block"
-        data-ad-client="ca-pub-1115814677653739"
-        data-ad-slot="1234567890"
-        data-ad-format="auto"
-      ></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1115814677653739" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
+    <!-- HOW TO USE -->
+    <section class="py-14 bg-white">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-2 text-center">How to Resize an Image in 3 Steps</h2>
+        <p class="text-gray-500 text-center mb-10">No software to install. Works directly in your browser.</p>
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <div class="text-3xl font-bold text-blue-500 mb-2">1</div>
+            <h3 class="font-semibold text-lg mb-2">Upload Your Image</h3>
+            <p class="text-gray-500 text-sm">Drag and drop any JPG or PNG image into the tool, or click to browse your files. Your image stays on your device — nothing is sent to any server.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <div class="text-3xl font-bold text-blue-500 mb-2">2</div>
+            <h3 class="font-semibold text-lg mb-2">Choose a Preset</h3>
+            <p class="text-gray-500 text-sm">Pick the social media platform you need. We automatically apply the correct pixel dimensions — Instagram, TikTok, YouTube, and more.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <div class="text-3xl font-bold text-blue-500 mb-2">3</div>
+            <h3 class="font-semibold text-lg mb-2">Download &amp; Share</h3>
+            <p class="text-gray-500 text-sm">Click "Resize Image" then download your perfectly sized file. Choose PNG for crisp quality or JPG for a smaller file size.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- FEATURES -->
-    <section class="py-16 text-center">
-      <h2 class="text-2xl font-bold mb-8">Why Use Our Tool?</h2>
-      <div class="grid md:grid-cols-3 gap-6 px-6">
-        <div class="bg-white p-6 rounded shadow">⚡ Fast & Free</div>
-        <div class="bg-white p-6 rounded shadow">📱 Social Media Ready</div>
-        <div class="bg-white p-6 rounded shadow">🎯 No Quality Loss</div>
+    <section class="py-14">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-2 text-center">Why Use QuickImageTools?</h2>
+        <p class="text-gray-500 text-center mb-10">Built for creators, designers, and anyone who needs perfectly sized images.</p>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">100% Free, Always</h3>
+            <p class="text-gray-500 text-sm">No subscriptions, no credits, no watermarks. Resize as many images as you want at no cost.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Privacy First</h3>
+            <p class="text-gray-500 text-sm">All image processing happens directly in your browser using the HTML5 Canvas API. Your photos never leave your device.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">No Quality Loss</h3>
+            <p class="text-gray-500 text-sm">We use intelligent letterboxing to fit your image to any dimension without stretching or cropping. White padding is added only where needed.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Social Media Ready</h3>
+            <p class="text-gray-500 text-sm">Presets match the exact pixel requirements for Instagram Posts, Stories, Reels, TikTok videos, and YouTube thumbnails.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Works on Any Device</h3>
+            <p class="text-gray-500 text-sm">Whether you're on a desktop, tablet, or smartphone, QuickImageTools works seamlessly in any modern web browser.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">PNG &amp; JPG Export</h3>
+            <p class="text-gray-500 text-sm">Choose your output format. PNG for lossless quality, or JPG with an adjustable quality slider to balance size and sharpness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL MEDIA SIZES REFERENCE -->
+    <section class="py-14 bg-white">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-2 text-center">Social Media Image Size Reference</h2>
+        <p class="text-gray-500 text-center mb-8">Bookmark this guide — these are the recommended dimensions for 2026.</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-blue-50 text-left">
+                <th class="p-3 border border-gray-200 font-semibold">Platform</th>
+                <th class="p-3 border border-gray-200 font-semibold">Content Type</th>
+                <th class="p-3 border border-gray-200 font-semibold">Recommended Size</th>
+                <th class="p-3 border border-gray-200 font-semibold">Aspect Ratio</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 border border-gray-200">Instagram</td>
+                <td class="p-3 border border-gray-200">Square Post</td>
+                <td class="p-3 border border-gray-200 font-mono">1080 × 1080</td>
+                <td class="p-3 border border-gray-200">1:1</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 border border-gray-200">Instagram</td>
+                <td class="p-3 border border-gray-200">Story / Reels</td>
+                <td class="p-3 border border-gray-200 font-mono">1080 × 1920</td>
+                <td class="p-3 border border-gray-200">9:16</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 border border-gray-200">Instagram</td>
+                <td class="p-3 border border-gray-200">Portrait Post</td>
+                <td class="p-3 border border-gray-200 font-mono">1080 × 1350</td>
+                <td class="p-3 border border-gray-200">4:5</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 border border-gray-200">TikTok</td>
+                <td class="p-3 border border-gray-200">Video / Cover</td>
+                <td class="p-3 border border-gray-200 font-mono">1080 × 1920</td>
+                <td class="p-3 border border-gray-200">9:16</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 border border-gray-200">YouTube</td>
+                <td class="p-3 border border-gray-200">Thumbnail</td>
+                <td class="p-3 border border-gray-200 font-mono">1280 × 720</td>
+                <td class="p-3 border border-gray-200">16:9</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 border border-gray-200">Facebook</td>
+                <td class="p-3 border border-gray-200">Post / Share</td>
+                <td class="p-3 border border-gray-200 font-mono">1200 × 630</td>
+                <td class="p-3 border border-gray-200">1.91:1</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 border border-gray-200">X (Twitter)</td>
+                <td class="p-3 border border-gray-200">In-feed Image</td>
+                <td class="p-3 border border-gray-200 font-mono">1200 × 675</td>
+                <td class="p-3 border border-gray-200">16:9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-3 text-center">Platform requirements can change. Always check the platform's official help center for the latest specs.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-14">
+      <div class="max-w-2xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-2 text-center">Frequently Asked Questions</h2>
+        <p class="text-gray-500 text-center mb-10">Everything you need to know about resizing images online.</p>
+        <div class="space-y-4">
+          <details class="bg-white rounded-xl shadow-sm p-5 group">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              Is this image resizer really free?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">Yes, completely free. There are no hidden fees, no watermarks on your output, and no account required. The tool is supported by non-intrusive ads.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5 group">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              Do you upload my images to a server?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">No. All resizing happens locally in your browser using the HTML5 Canvas API. Your images are never transmitted over the internet and remain completely private.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5 group">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              Will resizing reduce my image quality?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">We use high-quality canvas rendering. If you export as PNG, there is no quality loss whatsoever (lossless). If you export as JPG, you can control the quality with the slider — we recommend 85–95% for a good balance of quality and file size.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5 group">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              What image formats are supported?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">You can upload any image your browser supports — typically JPG, PNG, GIF, WebP, and BMP. You can export the resized result as either PNG or JPG.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5 group">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              Why does my image have white bars on the sides?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">If your image's aspect ratio doesn't match the chosen preset, we add white padding (letterboxing) to fill the canvas without cropping or distorting your image. This is the standard approach used by most social media scheduling apps.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5 group">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              Can I resize an image to a custom size?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">Currently, the tool offers four popular social media presets. Custom dimension input is on our roadmap. In the meantime, you can use the presets which cover the most common use cases.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5 group">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              Does this work on mobile?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">Yes. QuickImageTools works on any device with a modern browser, including iPhones, Android phones, and tablets. The interface adapts to your screen size automatically.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5 group">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              What is the maximum file size I can upload?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">There's no enforced file size limit — it's only bounded by your browser's memory. In practice, files up to 20–30 MB work fine on most devices. Very large images (50 MB+) may be slow on older hardware.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section class="py-14 bg-white">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-2 text-center">Image Guides &amp; Tips</h2>
+        <p class="text-gray-500 text-center mb-10">Learn more about getting the best results from your images.</p>
+        <div class="grid md:grid-cols-3 gap-6">
+          <a href="/blog/how-to-resize-images-for-social-media.html" class="block bg-gray-50 hover:bg-blue-50 p-5 rounded-xl transition">
+            <h3 class="font-bold mb-2">How to Resize Images for Social Media</h3>
+            <p class="text-gray-500 text-sm">A complete platform-by-platform guide to getting the right image dimensions.</p>
+            <span class="text-blue-500 text-sm mt-3 inline-block">Read guide →</span>
+          </a>
+          <a href="/blog/instagram-image-sizes-guide.html" class="block bg-gray-50 hover:bg-blue-50 p-5 rounded-xl transition">
+            <h3 class="font-bold mb-2">Instagram Image Sizes: 2026 Guide</h3>
+            <p class="text-gray-500 text-sm">Every Instagram format explained — Posts, Stories, Reels, and profile pictures.</p>
+            <span class="text-blue-500 text-sm mt-3 inline-block">Read guide →</span>
+          </a>
+          <a href="/blog/png-vs-jpg-guide.html" class="block bg-gray-50 hover:bg-blue-50 p-5 rounded-xl transition">
+            <h3 class="font-bold mb-2">PNG vs JPG: Which Format to Use?</h3>
+            <p class="text-gray-500 text-sm">Understand the difference so you always export in the right format for your use case.</p>
+            <span class="text-blue-500 text-sm mt-3 inline-block">Read guide →</span>
+          </a>
+        </div>
+        <div class="text-center mt-6">
+          <a href="/blog/" class="text-blue-500 hover:underline text-sm font-medium">View all guides →</a>
+        </div>
       </div>
     </section>
 
     <script>
-      // PRESETS — use inline styles for active state so Tailwind purge doesn't remove them
-      let selectedFormat = "1080x1080";
+      let selectedSize = "1080x1080";
       const buttons = document.querySelectorAll(".preset-btn");
 
       function setActive(btn) {
-        buttons.forEach((b) => {
+        buttons.forEach(b => {
           b.style.backgroundColor = "";
           b.style.color = "";
           b.style.boxShadow = "";
@@ -196,59 +347,47 @@
         btn.style.transform = "scale(1.03)";
       }
 
-      buttons.forEach((btn) => {
+      buttons.forEach(btn => {
         btn.addEventListener("click", () => {
           setActive(btn);
-          selectedFormat = btn.dataset.size;
+          selectedSize = btn.dataset.size;
         });
       });
-
-      // default: first button selected
       setActive(buttons[0]);
 
-      // DRAG & DROP
       const dropZone = document.getElementById("dropZone");
       const fileInput = document.getElementById("upload");
       const previewImg = document.getElementById("imagePreview");
 
       dropZone.addEventListener("click", () => fileInput.click());
-
-      dropZone.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        dropZone.classList.add("border-blue-500");
-      });
-      dropZone.addEventListener("dragleave", () => {
-        dropZone.classList.remove("border-blue-500");
-      });
-      dropZone.addEventListener("drop", (e) => {
+      dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("border-blue-500"); });
+      dropZone.addEventListener("dragleave", () => dropZone.classList.remove("border-blue-500"));
+      dropZone.addEventListener("drop", e => {
         e.preventDefault();
         dropZone.classList.remove("border-blue-500");
-        const file = e.dataTransfer.files[0];
         fileInput.files = e.dataTransfer.files;
-        showPreview(file);
+        showPreview(e.dataTransfer.files[0]);
       });
       fileInput.addEventListener("change", () => showPreview(fileInput.files[0]));
 
       function showPreview(file) {
         const reader = new FileReader();
-        reader.onload = (e) => {
+        reader.onload = e => {
           previewImg.src = e.target.result;
           previewImg.classList.remove("hidden");
         };
         reader.readAsDataURL(file);
       }
 
-      // RESIZE
       function resizeImage() {
         const file = fileInput.files[0];
-        if (!file) { alert("Please upload an image"); return; }
+        if (!file) { alert("Please upload an image first."); return; }
 
-        const [width, height] = selectedFormat.split("x").map(Number);
+        const [width, height] = selectedSize.split("x").map(Number);
         const img = new Image();
         const reader = new FileReader();
 
-        reader.onload = (e) => { img.src = e.target.result; };
-
+        reader.onload = e => { img.src = e.target.result; };
         img.onload = function () {
           const canvas = document.getElementById("preview");
           canvas.width = width;
@@ -261,21 +400,20 @@
 
           const imgRatio = img.width / img.height;
           const canvasRatio = width / height;
-          let drawWidth, drawHeight, offsetX, offsetY;
+          let drawW, drawH, offX, offY;
 
           if (imgRatio > canvasRatio) {
-            drawHeight = height;
-            drawWidth = img.width * (height / img.height);
-            offsetX = (width - drawWidth) / 2;
-            offsetY = 0;
+            drawH = height;
+            drawW = img.width * (height / img.height);
+            offX = (width - drawW) / 2;
+            offY = 0;
           } else {
-            drawWidth = width;
-            drawHeight = img.height * (width / img.width);
-            offsetX = 0;
-            offsetY = (height - drawHeight) / 2;
+            drawW = width;
+            drawH = img.height * (width / img.width);
+            offX = 0;
+            offY = (height - drawH) / 2;
           }
-
-          ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+          ctx.drawImage(img, offX, offY, drawW, drawH);
 
           const link = document.getElementById("download");
           const format = document.getElementById("exportFormat").value;
@@ -291,21 +429,33 @@
           link.classList.remove("hidden");
           link.classList.add("block");
         };
-
         reader.readAsDataURL(file);
       }
 
-      // QUALITY SLIDER visibility
       const exportFormat = document.getElementById("exportFormat");
       const qualityGroup = document.getElementById("qualityGroup");
-      qualityGroup.style.display = "none";
+      const qualityInput = document.getElementById("quality");
+      const qualityVal = document.getElementById("qualityVal");
+
       exportFormat.addEventListener("change", () => {
         qualityGroup.style.display = exportFormat.value === "image/jpeg" ? "block" : "none";
       });
+      qualityInput.addEventListener("input", () => {
+        qualityVal.textContent = Math.round(qualityInput.value * 100) + "%";
+      });
     </script>
-  </body>
 
-  <footer class="text-center text-sm text-gray-500 py-6">
-    <a href="privacy.html" class="hover:underline">Privacy Policy</a>
-  </footer>
+    <footer class="bg-white border-t border-gray-200 text-center text-sm text-gray-500 py-8">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="flex flex-wrap justify-center gap-4 mb-4">
+          <a href="/" class="hover:text-blue-500 transition">Image Resizer</a>
+          <a href="/background-remover.html" class="hover:text-blue-500 transition">Background Remover</a>
+          <a href="/blog/" class="hover:text-blue-500 transition">Blog</a>
+          <a href="/about.html" class="hover:text-blue-500 transition">About</a>
+          <a href="/privacy.html" class="hover:text-blue-500 transition">Privacy Policy</a>
+        </div>
+        <p class="text-gray-400">&copy; 2026 QuickImageTools — Free browser-based image tools</p>
+      </div>
+    </footer>
+  </body>
 </html>

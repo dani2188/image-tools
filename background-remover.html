@@ -2,113 +2,289 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Background Remover</title>
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1115814677653739"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Remove the background from any image in seconds. Free online background remover — no signup, no software. Works on photos, logos, and product images." />
+    <meta property="og:title" content="Free Background Remover — QuickImageTools" />
+    <meta property="og:description" content="Remove image backgrounds instantly for free. Perfect for product photos, profile pictures, and creative projects." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://quickimagetools.onrender.com/background-remover.html" />
+    <link rel="canonical" href="https://quickimagetools.onrender.com/background-remover.html" />
+    <title>Free Background Remover — QuickImageTools</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1115814677653739" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" onerror="var s=document.createElement('script');s.src='https://cdn.tailwindcss.com';document.head.appendChild(s)" />
   </head>
 
-  
-      <!-- AdSense code here -->
-      <ins
-        class="adsbygoogle"
-        style="display: block"
-        data-ad-client="ca-pub-1115814677653739"
-        data-ad-slot="1234567890"
-        data-ad-format="auto"
-      ></ins>
+  <body class="bg-gray-50 text-gray-800">
 
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+    <!-- NAV -->
+    <nav class="bg-white shadow-sm sticky top-0 z-10">
+      <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="/" class="font-bold text-blue-600 text-lg">QuickImageTools</a>
+        <div class="flex gap-4 text-sm font-medium text-gray-600">
+          <a href="/" class="hover:text-blue-500 transition">Image Resizer</a>
+          <a href="/background-remover.html" class="text-blue-600">BG Remover</a>
+          <a href="/blog/" class="hover:text-blue-500 transition">Blog</a>
+          <a href="/about.html" class="hover:text-blue-500 transition">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="text-center py-14 bg-white shadow-sm">
+      <h1 class="text-3xl font-bold mb-3">Free Background Remover</h1>
+      <p class="text-gray-600 mb-2 max-w-xl mx-auto">Remove backgrounds from photos instantly using AI. Perfect for product shots, profile pictures, and creative projects.</p>
+      <p class="text-sm text-gray-400 mb-6">Supports JPG, PNG, WebP · No signup required</p>
+      <a href="#tool" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition font-semibold">Remove Background Free</a>
+    </section>
+
+    <!-- AD -->
+    <div class="text-center my-6">
+      <p class="text-xs text-gray-400 mb-1">Advertisement</p>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1115814677653739" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-  <body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-sm mx-4 text-center">
-      <h1 class="text-xl font-bold mb-4">🪄 Background Remover</h1>
+    <!-- TOOL -->
+    <section id="tool" class="flex justify-center py-12">
+      <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-sm mx-4 text-center">
+        <h2 class="text-xl font-bold mb-4">Remove Image Background</h2>
 
-      <!-- Upload -->
-      <input type="file" id="upload" class="mb-4" />
+        <div id="dropZone" class="border-2 border-dashed border-gray-300 p-6 rounded-lg mb-4 cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition">
+          <p class="text-gray-500">Drag &amp; drop an image or click to upload</p>
+          <input type="file" id="upload" class="hidden" accept="image/*" />
+        </div>
 
-      <!-- Button -->
-      <button
-        onclick="removeBackground()"
-        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full"
-      >
-        Remove Background
-      </button>
+        <div id="status" class="hidden text-sm text-blue-600 mb-3 font-medium">Processing your image...</div>
+        <div id="errorMsg" class="hidden text-sm text-red-500 mb-3"></div>
 
-      <!-- Result -->
-      <img id="result" class="mt-4 hidden rounded-lg" />
+        <button onclick="removeBackground()" class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-semibold px-4 py-3 rounded-xl w-full transition shadow-sm">
+          Remove Background
+        </button>
 
-      <!-- Download -->
-      <a
-        id="download"
-        class="mt-4 text-blue-600 hidden"
-        download="no-bg.png"
-      >
-        Download Image
-      </a>
+        <img id="result" class="mt-5 hidden rounded-lg max-w-full mx-auto" alt="Image with background removed" />
+
+        <a id="download" class="hidden mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-3 rounded-xl w-full text-center transition shadow-sm" download="no-background.png">
+          Download Image
+        </a>
+
+        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-center gap-5 text-sm">
+          <a href="/" class="text-blue-500 hover:underline">Image Resizer</a>
+          <a href="https://quickpdftool.onrender.com" target="_blank" rel="noopener" class="text-blue-500 hover:underline">PDF Tools</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AD -->
+    <div class="text-center my-6">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1115814677653739" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+
+    <!-- HOW IT WORKS -->
+    <section class="py-14 bg-white">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-2 text-center">How It Works</h2>
+        <p class="text-gray-500 text-center mb-10">AI-powered background removal in three easy steps.</p>
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <div class="text-3xl font-bold text-blue-500 mb-2">1</div>
+            <h3 class="font-semibold text-lg mb-2">Upload Your Image</h3>
+            <p class="text-gray-500 text-sm">Drag and drop or click to select a photo from your device. Works best with photos that have a clear subject — people, animals, products, or objects.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <div class="text-3xl font-bold text-blue-500 mb-2">2</div>
+            <h3 class="font-semibold text-lg mb-2">AI Removes the Background</h3>
+            <p class="text-gray-500 text-sm">Our tool uses advanced AI to detect the subject and remove everything around it. The process typically takes just a few seconds.</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <div class="text-3xl font-bold text-blue-500 mb-2">3</div>
+            <h3 class="font-semibold text-lg mb-2">Download as PNG</h3>
+            <p class="text-gray-500 text-sm">Your result is downloaded as a PNG file with a transparent background, ready to place on any new background in your design software.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="py-14">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-2 text-center">What Can You Use It For?</h2>
+        <p class="text-gray-500 text-center mb-10">Background removal unlocks a huge range of creative possibilities.</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Product Photography</h3>
+            <p class="text-gray-500 text-sm">Create clean, professional white-background product images for your online store, Amazon listings, or catalog. Give all your products a consistent look without an expensive photoshoot setup.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Profile Pictures &amp; Headshots</h3>
+            <p class="text-gray-500 text-sm">Replace a cluttered or distracting background from your professional headshot with a clean solid color or branded background. Ideal for LinkedIn, professional websites, and team pages.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Graphic Design &amp; Marketing</h3>
+            <p class="text-gray-500 text-sm">Cut out subjects to use in posters, social media graphics, banners, and ads. A transparent PNG can be dropped into any design tool — Canva, Photoshop, Figma — without extra cleanup work.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Social Media Content</h3>
+            <p class="text-gray-500 text-sm">Create eye-catching Instagram and TikTok content by placing yourself or your subject onto custom, branded, or seasonal backgrounds that match your aesthetic.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPS -->
+    <section class="py-14 bg-white">
+      <div class="max-w-2xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-2 text-center">Tips for Best Results</h2>
+        <p class="text-gray-500 text-center mb-8">Follow these guidelines to get the cleanest cut-outs.</p>
+        <ul class="space-y-4 text-sm text-gray-700">
+          <li class="flex gap-3">
+            <span class="text-blue-500 font-bold text-base">✓</span>
+            <span><strong>Use high contrast photos.</strong> Images where the subject clearly stands out from the background (e.g., a person against a plain wall) produce the cleanest results.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-blue-500 font-bold text-base">✓</span>
+            <span><strong>Good lighting matters.</strong> Well-lit subjects with defined edges are much easier for AI to detect and separate accurately.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-blue-500 font-bold text-base">✓</span>
+            <span><strong>Avoid motion blur.</strong> Sharp, in-focus images always produce better cut-outs than blurry or low-resolution photos.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-blue-500 font-bold text-base">✓</span>
+            <span><strong>Download as PNG.</strong> Always save your background-removed image as a PNG file to preserve the transparent background. Saving as JPG will add a white background.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-blue-500 font-bold text-base">✓</span>
+            <span><strong>Resize after removing the background.</strong> For social media use, remove the background first, then use our <a href="/" class="text-blue-500 hover:underline">Image Resizer</a> to get the exact dimensions you need.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-14">
+      <div class="max-w-2xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-2 text-center">Frequently Asked Questions</h2>
+        <p class="text-gray-500 text-center mb-10"></p>
+        <div class="space-y-4">
+          <details class="bg-white rounded-xl shadow-sm p-5">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              Is the background remover really free?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">Yes. You can remove backgrounds from images at no cost. The service is supported by advertising so you can use it without paying.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              What file formats are supported?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">You can upload JPG, PNG, and WebP images. The result is always delivered as a PNG file with a transparent background, which preserves all the detail from the original.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              How accurate is the AI background removal?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">The AI performs very well on clear subjects like people, animals, and products against simple backgrounds. Complex scenes with many overlapping elements or very similar colors between subject and background may produce less precise results.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              Are my images stored or shared?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">Your images are sent securely to an AI processing service solely to perform the background removal. They are not stored permanently or used for any other purpose. Please review our <a href="/privacy.html" class="text-blue-500 hover:underline">Privacy Policy</a> for full details.</p>
+          </details>
+          <details class="bg-white rounded-xl shadow-sm p-5">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center">
+              Can I use the result for commercial purposes?
+              <span class="text-blue-500 text-xl">+</span>
+            </summary>
+            <p class="text-gray-600 mt-3 text-sm">The background-removed image is derived from your original photo. You retain all rights to your original content. Using the tool on an image you own or have the rights to is fine for any purpose, including commercial use.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
     <script>
-      async function removeBackground() {
-        const fileInput = document.getElementById("upload");
-        const file = fileInput.files[0];
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("upload");
 
-        if (!file) {
-          alert("Upload an image");
-          return;
-        }
+      dropZone.addEventListener("click", () => fileInput.click());
+      dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("border-blue-500"); });
+      dropZone.addEventListener("dragleave", () => dropZone.classList.remove("border-blue-500"));
+      dropZone.addEventListener("drop", e => {
+        e.preventDefault();
+        dropZone.classList.remove("border-blue-500");
+        fileInput.files = e.dataTransfer.files;
+        updateDropLabel(e.dataTransfer.files[0]);
+      });
+      fileInput.addEventListener("change", () => updateDropLabel(fileInput.files[0]));
+
+      function updateDropLabel(file) {
+        if (file) dropZone.querySelector("p").textContent = file.name;
+      }
+
+      async function removeBackground() {
+        const file = fileInput.files[0];
+        if (!file) { showError("Please select an image first."); return; }
+
+        const status = document.getElementById("status");
+        const errorMsg = document.getElementById("errorMsg");
+        status.classList.remove("hidden");
+        errorMsg.classList.add("hidden");
 
         const formData = new FormData();
         formData.append("image_file", file);
 
-        const response = await fetch("https://api.remove.bg/v1.0/removebg", {
-          method: "POST",
-          headers: {
-            "X-Api-Key": "sAxXch7zHos5JSBKCDUZyi9S",
-          },
-          body: formData,
-        });
+        try {
+          const response = await fetch("https://api.remove.bg/v1.0/removebg", {
+            method: "POST",
+            headers: { "X-Api-Key": "sAxXch7zHos5JSBKCDUZyi9S" },
+            body: formData,
+          });
 
-        if (!response.ok) {
-          alert("Error removing background");
-          return;
+          status.classList.add("hidden");
+
+          if (!response.ok) {
+            showError("Could not remove background. Please try a different image.");
+            return;
+          }
+
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+
+          const img = document.getElementById("result");
+          const link = document.getElementById("download");
+          img.src = url;
+          img.classList.remove("hidden");
+          link.href = url;
+          link.classList.remove("hidden");
+          link.classList.add("block");
+        } catch (e) {
+          status.classList.add("hidden");
+          showError("Network error. Please check your connection and try again.");
         }
+      }
 
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-
-        const img = document.getElementById("result");
-        const link = document.getElementById("download");
-
-        img.src = url;
-        img.classList.remove("hidden");
-
-        link.href = url;
-        link.classList.remove("hidden");
-        link.classList.add("block");
+      function showError(msg) {
+        const errorMsg = document.getElementById("errorMsg");
+        errorMsg.textContent = msg;
+        errorMsg.classList.remove("hidden");
       }
     </script>
+
+    <footer class="bg-white border-t border-gray-200 text-center text-sm text-gray-500 py-8">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="flex flex-wrap justify-center gap-4 mb-4">
+          <a href="/" class="hover:text-blue-500 transition">Image Resizer</a>
+          <a href="/background-remover.html" class="hover:text-blue-500 transition">Background Remover</a>
+          <a href="/blog/" class="hover:text-blue-500 transition">Blog</a>
+          <a href="/about.html" class="hover:text-blue-500 transition">About</a>
+          <a href="/privacy.html" class="hover:text-blue-500 transition">Privacy Policy</a>
+        </div>
+        <p class="text-gray-400">&copy; 2026 QuickImageTools — Free browser-based image tools</p>
+      </div>
+    </footer>
   </body>
-
-  
-      <!-- AdSense code here -->
-      <ins
-        class="adsbygoogle"
-        style="display: block"
-        data-ad-client="ca-pub-1115814677653739"
-        data-ad-slot="1234567890"
-        data-ad-format="auto"
-      ></ins>
-
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-    
 </html>
